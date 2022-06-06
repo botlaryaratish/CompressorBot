@@ -17,7 +17,7 @@ from .funcn import *
 from .FastTelethon import download_file, upload_file
 
 async def screenshot(e):
-    await e.edit("`Generating Screenshots...💫`")
+    await e.edit("`Skrinshotlar yaratish...📸`")
     COUNT.append(e.chat_id)
     wah = e.pattern_match.group(1).decode("UTF-8")
     key = decode(wah)
@@ -35,13 +35,13 @@ async def screenshot(e):
         await e.client.send_file(e.chat_id, pic)
         await e.client.send_message(
             e.chat_id,
-            "Check Screenshots Above 😁",
+            "Yuqoridagi skrinshotlarni tekshiring 😁",
             buttons=[
                 [
-                    Button.inline("GENERATE SAMPLE", data=f"gsmpl{wah}"),
-                    Button.inline("COMPRESS", data=f"sencc{wah}"),
+                    Button.inline("NAMUNA YASHLASH", data=f"gsmpl{wah}"),
+                    Button.inline("SIQISH", data=f"sencc{wah}"),
                 ],
-                [Button.inline("SKIP", data=f"skip{wah}")],
+                [Button.inline("O'TKAZISH", data=f"skip{wah}")],
             ],
         )
         COUNT.remove(e.chat_id)
@@ -73,10 +73,10 @@ async def encc(e):
         wh = decode(wah)
         out, dl, thum, dtime = wh.split(";")
         nn = await e.edit(
-            "`Compressing..`",
+            "`Siqish..`",
             buttons=[
-                [Button.inline("STATS", data=f"stats{wah}")],
-                [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+                [Button.inline("STATISTIKA", data=f"stats{wah}")],
+                [Button.inline("JARAYONNI BEKOR QILISh", data=f"skip{wah}")],
             ],
         )
         cmd = f'ffmpeg -i "{dl}" -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{out}" -y'
@@ -96,14 +96,14 @@ async def encc(e):
         ees = dt.now()
         ttt = time.time()
         await nn.delete()
-        nnn = await e.client.send_message(e.chat_id, "`📤Uploading...📤`")
+        nnn = await e.client.send_message(e.chat_id, "`📤Yuklanmoqda...📤`")
         with open(out, "rb") as f:
             ok = await upload_file(
                      client=e.client,
                      file=f,
                      name=out,
                      progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                         progress(d, t, nnn, ttt, "uploading..")
+                         progress(d, t, nnn, ttt, "download..")
                          ),
                      )
         ds = await e.client.send_file(
@@ -123,7 +123,7 @@ async def encc(e):
         a1 = await info(dl, e)
         a2 = await info(out, e)
         dk = await ds.reply(
-            f"Original Size : {hbs(org)}\n😻Compressed Size : {hbs(com)}\n😻Compressed Percentage : {per}\n\nMediainfo: [Before]({a1})|[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+            f"Original Size : {hbs(org)}\n🧸Siqilgan o'lcham : {hbs(com)}\n🧸Siqilgan foiz : {per}\n\nMediainfo: [Before]({a1})|[After]({a2})\n\nYuklab olingan in {x}\nSiqilgan {xx}\nYuklangan {xxx}",
             link_preview=False,
         )
         await ds.forward_to(LOG)
@@ -143,10 +143,10 @@ async def sample(e):
     out, dl, thum, dtime = wh.split(";")
     ss, dd = await duration_s(dl)
     xxx = await e.edit(
-        "`Generating Sample...`",
+        "`Namuna yaratish...`",
         buttons=[
-            [Button.inline("STATS", data=f"stats{wah}")],
-            [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+            [Button.inline("STATISTIKA", data=f"stats{wah}")],
+            [Button.inline("JARAYONNI BEKOR QILISh", data=f"skip{wah}")],
         ],
     )
     ncmd = f'ffmpeg -i "{dl}" -preset ultrafast -ss {ss} -to {dd} -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{out}" -y'
@@ -173,14 +173,14 @@ async def sample(e):
             force_document=False,
             thumb=thum,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, xxx, ttt, "📤uploading..📤", file=f"{out}")
+                progress(d, t, xxx, ttt, "📤yuklash..📤", file=f"{out}")
             ),
             buttons=[
                 [
                     Button.inline("SCREENSHOTS", data=f"sshot{wah}"),
-                    Button.inline("COMPRESS", data=f"sencc{wah}"),
+                    Button.inline("SIQISH", data=f"sencc{wah}"),
                 ],
-                [Button.inline("SKIP", data=f"skip{wah}")],
+                [Button.inline("OʻTKAZISH", data=f"skip{wah}")],
             ],
         )
         COUNT.remove(e.chat_id)
@@ -211,25 +211,25 @@ async def encod(event):
                 return await event.reply("`This Video File is already Compressed 😑😑.`")
         except BaseException:
             pass
-        xxx = await event.reply("`📥Downloading...📥`")
-        """ For Force Subscribe Channel"""
+        xxx = await event.reply("`📥Yuklab olinmoqda...📥`")
+        """ Majburiy obuna bo'lish uchun"""
         # pp = []
         # async for x in event.client.iter_participants("put group username"):
         #    pp.append(x.id)
         # if (user.id) not in pp:
         #    return await xxx.edit(
         #        "U Must Subscribe This Channel To Use This Bot",
-        #       buttons=[Button.url("JOIN CHANNEL", url="https://t.me/binary_lk")],
+        #       buttons=[Button.url("JOIN CHANNEL", url="https://t.me/Uzbekchaa_Anime")],
         #   )
         if len(COUNT) > 4 and user.id != OWNER:
             llink = (await event.client(cl(LOG))).link
             return await xxx.edit(
-                "Overload Already 5 Process Running",
+                "Haddan tashqari yuk allaqachon 5 ta jarayon ishlamoqda",
                 buttons=[Button.url("Working Status", url=llink)],
             )
         if user.id in COUNT and user.id != OWNER:
             return await xxx.edit(
-                "Already Your 1 Request Processing\nKindly Wait For it to Finish"
+                "1 ta soʻrovingiz koʻrib chiqilmoqda\nUning tugashini kuting"
             )
         COUNT.append(user.id)
         s = dt.now()
@@ -297,14 +297,14 @@ async def encod(event):
         COUNT.remove(user.id)
         await event.client.send_message(
             event.chat_id,
-            f"✅DOWNLODING COMPLETED!!✅",
+            f"YUKLAB OLISH TUGALDI!!",
             buttons=[
                 [
-                    Button.inline("GENERATE SAMPLE", data=f"gsmpl{key}"),
+                    Button.inline("NAMUNA YASHLASH", data=f"gsmpl{key}"),
                     Button.inline("SCREENSHOTS", data=f"sshot{key}"),
                 ],
                 [Button.url("MEDIAINFO", url=inf)],
-                [Button.inline("COMPRESS", data=f"sencc{key}")],
+                [Button.inline("SIQISH", data=f"sencc{key}")],
             ],
         )
     except BaseException as er:
@@ -319,10 +319,10 @@ async def customenc(e, key):
     wh = decode(wah)
     out, dl, thum, dtime = wh.split(";")
     nn = await e.edit(
-        "`Compressing..`",
+        "`Siqish..`",
         buttons=[
-            [Button.inline("STATS", data=f"stats{wah}")],
-            [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+            [Button.inline("STATISTIKA", data=f"stats{wah}")],
+            [Button.inline("JARAYONNI BEKOR QILISh", data=f"skip{wah}")],
         ],
     )
     cmd = f'ffmpeg -i "{dl}" -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{out}" -y'
@@ -343,7 +343,7 @@ async def customenc(e, key):
     ees = dt.now()
     ttt = time.time()
     await nn.delete()
-    nnn = await e.client.send_message(e.chat_id, "`Uploading...`")
+    nnn = await e.client.send_message(e.chat_id, "`yuklash...`")
     try:
         with open(out, "rb") as f:
             ok = await upload_file(
@@ -351,7 +351,7 @@ async def customenc(e, key):
                      file=f,
                      name=out,
                      progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                         progress(d, t, nnn, ttt, "📤uploading..📤")
+                         progress(d, t, nnn, ttt, "📤yuklash..📤")
                          ),
                      )
         ds = await e.client.send_file(
@@ -376,7 +376,7 @@ async def customenc(e, key):
     a1 = await info(dl, e)
     a2 = await info(out, e)
     dk = await ds.reply(
-        f"Original Size : {hbs(org)}\n😻Compressed Size : {hbs(com)}\n😻Compressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+         f"Original Size : {hbs(org)}\n🧸Siqilgan o'lcham : {hbs(com)}\n🧸Siqilgan foiz : {per}\n\nMediainfo: [Before]({a1})|[After]({a2})\n\nYuklab olingan in {x}\nSiqilgan {xx}\nYuklangan {xxx}",
         link_preview=False,
     )
     await ds.forward_to(LOG)
