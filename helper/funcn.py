@@ -86,7 +86,7 @@ async def progress(current, total, event, start, type_of_ps, file=None):
         )
         tmp = (
             progress_str
-            + "`{0} of {1}`\n\n`✦ Speed: {2}/s`\n\n`✦ ETA: {3}`\n\n".format(
+            + "`{0} of {1}`\n\n`✦ Tezlik: {2}/s`\n\n`✦ ETA: {3}`\n\n".format(
                 hbs(current),
                 hbs(total),
                 hbs(speed),
