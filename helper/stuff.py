@@ -29,12 +29,13 @@ async def up(event):
 async def start(event):
     ok = await event.client(GetFullUserRequest(event.sender_id))
     await event.reply(
-        f"Hello ! ☘️ `{ok.user.first_name}`\n\nThis is a Video CompressorBot.🎯\nI can Generate Samples/screenshots too.\n\nJust Foward Video To Get Options\nPowered By @binary_lk",
+       Fayl "<string>", 18-qator
+    f"Assalomu alaykum! ☘️ `{ok.user.first_name}`\n\nBu Video CompressorBot.🎯\nMen ham namunalar/skrinshotlar yaratishim mumkin.\n\nTanlovlarni olish uchun shunchaki videoni yoʻnaltiring\nPowered by @gucci_obbo",
         buttons=[
             [Button.inline("𝐇𝐄𝐋𝐏", data="ihelp")],
             [
-                Button.url("𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐎𝐃𝐄", url="github.com/Silentzlk/CompressorBot"),
-                Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏", url="t.me/Binary_bots_Support"),
+                Button.url("𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐎𝐃𝐄", url="t.mr/gucci_obbo"),
+                Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏", url="t.me/Uzbekchaa_Anime"),
             ],
         ],
     )
@@ -42,13 +43,13 @@ async def start(event):
 
 async def help(event):
     await event.reply(
-        "**☘️ A Video CompressorBot**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video & Screenshots\n-Due to Quality Settings Bot Takes Time To Compress.\nSend videos One By One After Completing.\n\nJust Forward Video To Get Options"
+         "**☘️ Video CompressorBot**\n\n+Ushbu bot arzimagan sifatdagi videolarni siqib chiqaradi.\n+Namunali siqilgan video va skrinshotlar yarating\n-Sifat sozlamalari tufayli bot siqish uchun vaqt oladi.\nVideolarni birma-bir yuboring. Tugallagandan keyin bittasi.\n\nVideoni tanlash uchun faqat yoʻnaltiring”,
     )
 
 
 async def ihelp(event):
     await event.edit(
-        "**☘️ A  Video CompressorBot**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video & Screenshots\n-Due to Quality Settings Bot Takes Time To Compress.\nSend videos One By One After Completing.\n\nJust Forward Video To Get Options",
+        "**☘️ Video CompressorBot**\n\n+Ushbu bot arzimagan sifatdagi videolarni siqib chiqaradi.\n+Namunali siqilgan video va skrinshotlar yarating\n-Sifat sozlamalari tufayli bot siqish uchun vaqt oladi.\nVideolarni birma-bir yuboring. Tugallagandan keyin bittasi.\n\nVideoni tanlash uchun faqat yoʻnaltiring”,
         buttons=[Button.inline("BACK", data="beck")],
     )
 
@@ -56,12 +57,14 @@ async def ihelp(event):
 async def beck(event):
     ok = await event.client(GetFullUserRequest(event.sender_id))
     await event.edit(
-        f"Hello ! ☘️ `{ok.user.first_name}`\n\nThis is a Video CompressorBot.🎯\nI can Generate Samples/screenshots too.\n\nJust Foward Video To Get Options\nPowered By @binary_lk",
+        Fayl "<string>", 18-qator
+    Fayl "<string>", 18-qator
+    f"Assalomu alaykum! ☘️ `{ok.user.first_name}`\n\nBu Video CompressorBot.🎯\nMen ham namunalar/skrinshotlar yaratishim mumkin.\n\nTanlovlarni olish uchun shunchaki videoni yoʻnaltiring\nPowered by @gucci_obbo",
         buttons=[
             [Button.inline("𝐇𝐄𝐋𝐏", data="ihelp")],
             [
-                Button.url("𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐎𝐃𝐄", url="github.com/Silentzlk/CompressorBot"),
-                Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏", url="t.me/Binary_bots_Support"),
+                Button.url("𝐒𝐎𝐔𝐑𝐂𝐄 𝐂𝐎𝐃𝐄", url="t.me/gucci_obbo"),
+                Button.url("𝐒𝐔𝐏𝐏𝐎𝐑𝐓 𝐆𝐑𝐎𝐔𝐏", url="t.me/Uzbekchaa_Anime"),
             ],
         ],
     )
@@ -84,7 +87,7 @@ async def sencc(e):
 async def back(e):
     key = e.pattern_match.group(1).decode("UTF-8")
     await e.edit(
-        "☘️  **What To Do** ☘️",
+        "☘️  **Nima qilish kerak** ☘️",
         buttons=[
             [
                 Button.inline("GENERATE SAMPLE", data=f"gsmpl{key}"),
